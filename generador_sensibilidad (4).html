@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Sensibilidad Free Fire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: #ff5722;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e64a19;
+        }
+        .ad-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generador de Sensibilidad Free Fire</h2>
+        <label for="device">Modelo de Teléfono:</label>
+        <input type="text" id="device" placeholder="Ej. Motorola One Macro">
+        
+        <label for="fingers">Número de Dedos:</label>
+        <select id="fingers">
+            <option value="2">2 Dedos</option>
+            <option value="3">3 Dedos</option>
+            <option value="4">4 Dedos</option>
+        </select>
+        
+        <button onclick="generateSensitivity()">Generar Configuración</button>
+        
+        <h3>Resultados:</h3>
+        <p id="result"></p>
+        
+        <div class="ad-container">
+            <p>Publicidad:</p>
+            <div id="ad-slot">Aquí aparecerán anuncios</div>
+        </div>
+    </div>
+
+    <script>
+        function generateSensitivity() {
+            let device = document.getElementById('device').value;
+            let fingers = document.getElementById('fingers').value;
+            
+            let sensitivity = {
+                general: Math.floor(Math.random() * (100 - 85) + 85),
+                redDot: Math.floor(Math.random() * (95 - 85) + 85),
+                x2: Math.floor(Math.random() * (90 - 80) + 80),
+                x4: Math.floor(Math.random() * (85 - 75) + 75),
+                awm: Math.floor(Math.random() * (60 - 50) + 50),
+                dpi: Math.floor(Math.random() * (700 - 500) + 500)
+            };
+            
+            document.getElementById('result').innerHTML = `
+                <strong>Modelo:</strong> ${device} <br>
+                <strong>Dedos:</strong> ${fingers} <br>
+                <strong>Sensibilidad General:</strong> ${sensitivity.general} <br>
+                <strong>Punto Rojo:</strong> ${sensitivity.redDot} <br>
+                <strong>Mira 2x:</strong> ${sensitivity.x2} <br>
+                <strong>Mira 4x:</strong> ${sensitivity.x4} <br>
+                <strong>Mira AWM:</strong> ${sensitivity.awm} <br>
+                <strong>DPI Recomendado:</strong> ${sensitivity.dpi} <br>
+            `;
+        }
+    </script>
+</body>
+</html>
